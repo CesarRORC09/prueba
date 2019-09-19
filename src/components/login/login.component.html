@@ -1,0 +1,61 @@
+<mat-progress-bar ></mat-progress-bar>
+<div
+  fxFill
+  class="main-container"
+  fxLayout="column"
+  fxLayoutAlign="center">
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap=".5rem" fxFill>
+      <div fxFlex>
+        <img src="./assets/img/logo.png" style="height: 7rem">
+      </div>
+      <form fxLayout="column"
+            fxLayoutAlign="center"
+            fxLayoutGap=".5rem"
+            [formGroup]="loginForm"
+      style="width: 20rem">
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electr&oacute;nico</mat-label>
+          <input
+            matInput
+            required
+            nonecomplete="off"
+            name="email"
+            type="text"
+            style="color: white"
+            formControlName="email"
+          >
+          <mat-error>
+            Por favor ingresa un email v&aacute;lido
+          </mat-error>
+          <mat-error >
+            Correo electrónico <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearence="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput 
+            nonecomplete="off"
+            name="password"
+            type="password"
+            required
+            style="color: white"
+            formControlName="password"
+          >
+          <mat-error appearence="outline" >
+            Contraseña <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button
+                color="accent"
+                (click)='logIn()'
+                [disabled]="loginForm.invalid"
+               >INICIAR SESIÓN
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
