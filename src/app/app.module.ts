@@ -21,12 +21,23 @@ import { MatTableModule } from '@angular/material/table';
 import { MAT_DATE_LOCALE, MatChipsModule, MatNativeDateModule, MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 // Components
 import { HomeComponent } from '../components/home/home.component';
 import { MainComponent } from '../components/main/main.component';
 import { LoginComponent } from '../components/login/login.component';
+import { BoardComponent } from '../components/board/board.component';
+import { AddMisionComponent } from '../components/add-mision/add-mision.component';
+import { SettingsComponent } from '../components/settings/settings.component';
+import { CaptainSComponent } from '../components/captain-s/captain-s.component';
+import { AddCaptainComponent } from '../components/add-captain/add-captain.component';
+import { CompetitorsComponent } from '../components/competitors/competitors.component';
+import { AddCompetitorComponent } from '../components/add-competitor/add-competitor.component';
+import { SkuSComponent } from '../components/sku-s/sku-s.component';
+import { AddSkauComponent } from '../components/add-sku/add-skau.component';
+import { SidenavComponent } from '../components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +45,16 @@ import { LoginComponent } from '../components/login/login.component';
     HomeComponent,
     MainComponent,
     LoginComponent,
+    BoardComponent,
+    AddMisionComponent,
+    SettingsComponent,
+    CaptainSComponent,
+    AddCaptainComponent,
+    CompetitorsComponent,
+    AddCompetitorComponent,
+    SkuSComponent,
+    AddSkauComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +79,20 @@ import { LoginComponent } from '../components/login/login.component';
     MatListModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatSelectModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    AddMisionComponent,
+    AddCompetitorComponent,
+    AddCaptainComponent,
+    SettingsComponent,
+    AddSkauComponent,
+    CompetitorsComponent,
+    CaptainSComponent,
+    CompetitorsComponent,
+    SkuSComponent
+  ]
 })
 export class AppModule { }

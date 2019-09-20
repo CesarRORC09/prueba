@@ -39,17 +39,14 @@ export class LoginComponent implements OnInit {
   }
 
  logIn(){
-   console.log(
-    this.loginForm.value.email,
-    this.loginForm.value.password)
+   console.log(this.loginForm.value.email,this.loginForm.value.password);
    this.isLoading=true;
    this.authsrv.login(
      this.loginForm.value.email,
      this.loginForm.value.password
      ).then((response)=>{
-       console.log(response)
      if(response==true){
-       this._router.navigate(['/home'])
+       this._router.navigate(['/tablero']);
      }
      else{
        alert("error de log")
