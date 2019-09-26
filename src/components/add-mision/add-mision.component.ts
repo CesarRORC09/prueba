@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-mision',
@@ -9,13 +10,17 @@ export class AddMisionComponent implements OnInit {
 
   seleccion=false;
   subclase;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
   seleccionStatus(){
     this.seleccion=true;
     console.log(this.seleccion,this.subclase)
+  }
+
+  cancel(){
+    this.router.navigate(['/board/home']);
   }
 
 

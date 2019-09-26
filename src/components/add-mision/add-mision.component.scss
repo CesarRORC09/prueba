@@ -7,3 +7,15 @@
    margin: 0;
    padding: 0;
 }
+.canasta{
+    padding-left: 5%;
+    padding-top: 5%;
+}
+.square {
+    display: block;
+    float: left;
+    border: black dashed 1px;
+    height: 30%;
+    width: 30%;
+    overflow: hidden;
+}

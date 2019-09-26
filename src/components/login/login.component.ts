@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
      this.loginForm.value.password
      ).then((response)=>{
      if(response==true){
-       this._router.navigate(['/tablero']);
+       this._router.navigate(['/board']);
      }
      else{
        alert("error de log")

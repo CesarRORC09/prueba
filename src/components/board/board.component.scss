@@ -1,3 +1,10 @@
 .top-container {
     padding: 1rem
 }
+.icons{
+    font-size: 50px;
+    transition:2s;
+}
+.icons :hover{
+    transform: scale(1.5)
+}

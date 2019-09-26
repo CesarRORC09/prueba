@@ -1,1 +1,39 @@
-<p>captain-s works!</p>
+<div fxLayout="column" fxFill >
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px" class="top-container">
+            <mat-form-field fxFelx>
+                <input type="text" matInput placeholder="Buscar capitan" (upKey)="buscar()">
+            </mat-form-field>
+            <div>
+                    <button mat-stroked-button color="primary" (click)="newCaptain({}, true)"><mat-icon matPrefix>add</mat-icon>Agregar capitan</button>
+            </div>
+        </div>
+        <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
+        <div >
+            <table mat-table [dataSource]="captainDataSource" fxFill>
+    
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>nombre</th>
+                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="branch">
+                    <th mat-header-cell *matHeaderCellDef>Tienda</th>
+                    <td mat-cell *matCellDef="let element">{{element.branch}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="misions">
+                    <th mat-header-cell *matHeaderCellDef>misiones</th>
+                    <td mat-cell *matCellDef="let element">{{element.misions}}</td>
+                </ng-container>    
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    
+    </div>
