@@ -1,13 +1,32 @@
 <div fxLayout="column" fxFill>
     <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px" class="top-container">
-        <div fxLayout="column" fxFlex="95">
-            <mat-form-field fxFill>
-                <input type="text" matInput placeholder="Buscar mision" (upKey)="buscar()">
-            </mat-form-field>
-        </div>
-        <div fxLayout="column" fxFlex="5">   
+        <!-- <mat-form-field fxFelx>
+            <input type="text" matInput placeholder="Buscar mision" (upKey)="buscar()">
+        </mat-form-field> -->
+        <mat-form-field fxFlex appearance="outline">
+            <mat-label>Fecha de inicio</mat-label>
+            <input matInput [matDatepicker]="picker1" placeholder="Elige una fecha de inicio">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+            <mat-label>Fecha de finalización</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Elige una fecha de fin">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+            <mat-label>Competidor</mat-label>
+            <input type="text" matInput placeholder="Competidor">
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+                <mat-label>Estado</mat-label>
+                <input type="text" matInput placeholder="Estado">
+        </mat-form-field>
+        <div>   
             <span>
                 <button class="icons" mat-icon-button color="primary" (click)="newMission()" ><mat-icon matPrefix>add_circle</mat-icon></button>
+                <button class="icons" mat-icon-button color="primary" (click)="newMission()" ><mat-icon matPrefix>search</mat-icon></button>
             </span>
         </div>
     </div>
@@ -75,10 +94,10 @@
                       <div class="example-element-detail"
                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                         <div class="example-element-diagram">
-                          <div class="example-element-position"> {{element.id}} </div>
-                          <div class="example-element-name"> {{element.date_start}} - {{element.date_end}}</div>
-                          <div class="example-element-weight"> {{element.status}} </div>
-                          <div class="example-element-weight"> {{element.competitor}} </div>
+                          <div class="example-element-position">ID: {{element.id}} </div>
+                          <div class="example-element-name">PERIODO: {{element.date_start}} - {{element.date_end}}</div>
+                          <div class="example-element-weight">AVANCE: {{element.status}} </div>
+                          <div class="example-element-weight">COMPETIDOR: {{element.competitor}} </div>
                         </div>
                         <div class="example-element-description">
                           {{element.description}}
