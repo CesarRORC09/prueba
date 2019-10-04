@@ -13,9 +13,9 @@ export class SidenavComponent implements OnInit {
 
   fillerNav = [
     {name:"Misiones",route:"home"},
+    {name:"Productos",route:"skus"},
     {name:"Capitanes",route:"captains"},
-    {name:"Competidores",route:"competitors"},
-    {name:"Sku's",route:"skus"},
+    {name:"Empresas",route:"competitors"},
     {name:"Cerrar sesion",route:"/login"}
   ];
 
@@ -32,8 +32,6 @@ export class SidenavComponent implements OnInit {
   }
 
 
-
-  shouldRun =true;
 
   ngOnInit() {
     this.valueIcon=true

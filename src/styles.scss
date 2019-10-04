@@ -2,18 +2,20 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$operator-primary: mat-palette($mat-red);
-$operator-accent: mat-palette($mat-red, A700);
 
-$operator-warn: mat-palette($mat-red);
 
-$operator-theme: mat-light-theme($operator-primary, $operator-accent, $operator-warn);
+$admin-primary: mat-palette($mat-red);
+$admin-accent: mat-palette($mat-red, A700);
+$admin-warn: mat-palette($mat-red);
+
+$admin-theme: mat-light-theme($admin-primary, $admin-accent, $admin-warn);
 
 $custom-typography: mat-typography-config(
   $font-family: 'Montserrat'
 );
 
-@include angular-material-theme($operator-theme);
+
+@include angular-material-theme($admin-theme);
 @include mat-core($custom-typography);
 
 html, body { height: 100%; }

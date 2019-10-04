@@ -1,8 +1,14 @@
 <div fxLayout="column" fxFill>
-    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between center" class="top-container">
-                    <h1 fxFlexOffset="45">SKU'S</h1>
-                    <button mat-icon-button color="primary" class="icons" (click)="newSku()"><mat-icon matPrefix>add_circle</mat-icon></button>
-    </div>
+        <mat-toolbar color="accent">
+                <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" fxFlexOffset="3">
+                    <div>
+                        <h1>PRODUCTOS</h1>
+                    </div>
+                    <div>
+                        <button mat-raised-button	 color="primary" ><mat-icon matPrefix>add</mat-icon>&nbsp;PRODUCTO</button>
+                    </div>
+                </mat-toolbar-row>
+            </mat-toolbar>
     <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
     <div class="content-table">
             <table mat-table

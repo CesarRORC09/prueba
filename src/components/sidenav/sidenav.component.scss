@@ -30,6 +30,9 @@
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
   }
+  a.mat-list-item{
+    font-size:auto;
+  }
   
   .mat-nav-list a.active {
     background: rgba(128, 128, 128, 0.158);

@@ -1,4 +1,14 @@
 <div fxLayout="column" fxFill>
+        <mat-toolbar color="accent">
+                <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" fxFlexOffset="3">
+                        <div>
+                            <h1>MISIONES</h1>
+                        </div>
+                        <div>
+                            <button mat-raised-button	 color="primary" ><mat-icon matPrefix>add</mat-icon>&nbsp;MISION</button>
+                        </div>
+                    </mat-toolbar-row>
+        </mat-toolbar>
     <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px" class="top-container">
         <!-- <mat-form-field fxFelx>
             <input type="text" matInput placeholder="Buscar mision" (upKey)="buscar()">
@@ -49,15 +59,20 @@
                 <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">FECHA FINAL</span></th>
                 <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.date_end}}</span></td>
             </ng-container>
-
+            
             <ng-container matColumnDef="competitor">
                 <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">COCMPETIDOR</span></th>
                 <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.competitor}}</span></td>
             </ng-container>
-
+            
             <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">STATUS</span></th>
-                <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.status}}</span></td>
+                <td mat-cell *matCellDef="let element" [ngSwitch]="element.status">
+                    <span class="status" *ngSwitchCase="1" fxLayoutAlign="center" style="background: rgb(238, 170, 122)">EN PROCESO</span>
+                    <span class="status" *ngSwitchCase="2" fxLayoutAlign="center" style="background: rgb(101, 201, 222)">ASIGNADA</span>
+                    <span class="status" *ngSwitchCase="3" fxLayoutAlign="center" style="background: rgba(94, 184, 94, 0.849)">TERMINADA</span>
+                    <span class="status" *ngSwitchCase="4" fxLayoutAlign="center" style="background:#d50000">BLOQUEADA</span>
+                </td>
             </ng-container>
             
             <ng-container matColumnDef="progression">
