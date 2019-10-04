@@ -8,7 +8,7 @@ import { AddCaptainComponent } from '../add-captain/add-captain.component';
   styleUrls: ['./captain-s.component.scss']
 })
 export class CaptainSComponent implements OnInit {
-  captains=[{}];
+  captains=[{id:"1",name:"captain 1", branch:"101"}];
   captainDataSource= new MatTableDataSource(this.captains);
   displayedColumns=['id','name','branch','misions']
 

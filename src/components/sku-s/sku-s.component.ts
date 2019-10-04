@@ -16,23 +16,56 @@ import { AddSkauComponent } from '../add-sku/add-skau.component';
   ]
 })
 export class SkuSComponent implements OnInit {
-
+  buttonActivator:boolean ;
   skus = [
-    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"}
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
+    {sku:32132130,name:"Tijeras",class:"office",subclass:"writing"},
   ];
-  skusDataSource = new MatTableDataSource(this.skus);
-  displayedColumns = ['sku','name','class','subclass','options']
-  constructor(private matDialog:MatDialog) { }
+  dataSource = new MatTableDataSource(this.skus)
+  columnsToDisplay =  ['sku','name','class','subclass','options'];
+  expandedElement: PeriodicElement | null;
+
+  constructor() { }
 
   ngOnInit() {
+    this.buttonActivator=false;
   }
 
-  newSku(){
-    this.matDialog.open(AddSkauComponent,{
-      width:"60%"
-    });
+  mouseEnter(){
+    this.buttonActivator=true
+    console.log(this.buttonActivator)
   }
 
+  mouseLeave(){
+    this.buttonActivator=false
+    console.log(this.buttonActivator)
+  }
 
+  deleteRow(item){
+    if(this.skus.length){
+      let index = this.skus.indexOf(item);
+      if(index > -1){
+        this.skus.splice(index,1);
+        this.dataSource.data=this.skus;
+      } 
+    }
+  }
 
 }
+export interface PeriodicElement {
+  sku: string;
+  name: number;
+  class: number;
+  subclass: string;
+}
+
+

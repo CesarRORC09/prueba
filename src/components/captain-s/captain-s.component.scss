@@ -1,0 +1,18 @@
+.board{
+    width: 100%;
+}
+.top-container {
+    padding: 1rem
+}
+.icons{
+    font-size: 50px;
+    transition:2s;
+}
+.icons :hover{
+    transform: scale(1.5)
+}
+div.content-table {
+    overflow: auto;
+    margin: 2%;
+    height: 75%;
+  }

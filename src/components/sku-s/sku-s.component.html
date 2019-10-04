@@ -4,51 +4,77 @@
                     <button mat-icon-button color="primary" class="icons" (click)="newSku()"><mat-icon matPrefix>add_circle</mat-icon></button>
     </div>
     <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
-    <div>
-        <table mat-table [dataSource]="skusDataSource" class="board" >
-
-            <ng-container matColumnDef="sku">
-                <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">SKU</span></th>
-                <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.sku}}</span></td>
-            </ng-container>
-
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">NOMBRE</span></th>
-                <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.name}}</span></td>
-            </ng-container>
-
-            <ng-container matColumnDef="class">
-                <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">CLASE</span></th>
-                <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.class}}</span></td>
-            </ng-container>
-
-            <ng-container matColumnDef="subclass">
-                <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">SUBCLASE</span></th>
-                <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.subclass}}</span></td>
-            </ng-container>
-
-            <ng-container matColumnDef="options">
-                    <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">OPCIONES</span></th>
-                    <td mat-cell *matCellDef="let element">
-                        <span fxLayoutAlign="center">
-                            <button mat-icon-button class="icons">
-                                <mat-icon>create</mat-icon>
-                            </button>
-                            <button mat-icon-button class="icons">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                            <button mat-icon-button class="icons">
-                                <mat-icon>pageview</mat-icon>
-                            </button>
-                            <button mat-icon-button color="warn" class="icons">
-                                <mat-icon>not_interested</mat-icon>
-                            </button>
-                        </span>
-                    </td>
-                </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>.
-      </table>
+    <div class="content-table">
+            <table mat-table
+            [dataSource]="dataSource" multiTemplateDataRows
+            class="mat-elevation-z8">
+    
+       <ng-container matColumnDef="sku">
+           <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">SKU</span></th>
+           <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.sku}}</span></td>
+       </ng-container>
+ 
+       <ng-container matColumnDef="name">
+           <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">NOMBRE</span></th>
+           <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.name}}</span></td>
+       </ng-container>
+ 
+       <ng-container matColumnDef="class">
+           <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">CLASE</span></th>
+           <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.class}}</span></td>
+       </ng-container>
+ 
+       <ng-container matColumnDef="subclass">
+           <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">SUBCLASE</span></th>
+           <td mat-cell *matCellDef="let element"><span fxLayoutAlign="center">{{element.subclass}}</span></td>
+       </ng-container>
+ 
+       <ng-container matColumnDef="options">
+           <th mat-header-cell *matHeaderCellDef><span fxLayoutAlign="center">OPCIONES</span></th>
+           <td mat-cell *matCellDef="let element">
+               <span fxLayoutAlign="center">
+                    <button mat-icon-button class="icons" (mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
+                            <mat-icon>create</mat-icon>
+                        </button>
+                        <button mat-icon-button class="icons" (mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()" (click)="deleteRow(element)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button class="icons" (mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
+                            <mat-icon>pageview</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" class="icons"(mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
+                            <mat-icon>not_interested</mat-icon>
+                        </button>
+               </span>
+           </td>
+       </ng-container>
+     
+       <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+       <ng-container matColumnDef="expandedDetail">
+         <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+           <div class="example-element-detail"
+                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+             <div class="example-element-diagram">
+               <div class="example-element-position"> {{element.sku}} </div>
+               <div class="example-element-name"> {{element.name}} </div>
+               <div class="example-element-weight"> {{element.class}} </div>
+               <div class="example-element-weight"> {{element.subclass}} </div>
+             </div>
+             <div class="example-element-description">
+               {{element.description}}
+               <span class="example-element-description-attribution"></span>
+             </div>
+           </div>
+         </td>
+       </ng-container>
+     
+       <tr mat-header-row *matHeaderRowDef="columnsToDisplay;sticky: true" ></tr>
+       <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+           class="example-element-row"
+           [class.example-expanded-row]="expandedElement === element" 
+           (click)="expandedElement = (expandedElement === element || buttonActivator) ? null : element">
+       </tr>
+       <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+     </table>
     </div>
 </div>
