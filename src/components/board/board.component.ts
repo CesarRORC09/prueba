@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
-import { AddMisionComponent } from '../add-mision/add-mision.component';
+import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { trigger, style, state, animate, transition } from '@angular/animations';
 
@@ -19,29 +18,27 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
 export class BoardComponent implements OnInit {
 
   users=[
-    {id:"132231.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1'},
-    {id:"132232.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1'},
-    {id:"132233.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1'},
-    {id:"132234.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1'},
-    {id:"132235.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1'},
-    {id:"132236.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1'},
-    {id:"132237.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1'},
-    {id:"132238.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1'},
-    {id:"132239.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1'},
-    {id:"132240.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1'},
-    {id:"132241.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1'},
-    {id:"132242.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1'},
+    {id:"132231.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132232.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132233.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132234.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132235.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132236.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132237.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132238.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132239.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132240.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132241.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132242.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
 
-    {id:"132243.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1'},
-    {id:"132244.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1'},
-    {id:"132245.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1'},
-    {id:"132246.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1'},
-    {id:"132247.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1'},
-    {id:"132248.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1'},
-    {id:"132249.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1'},
-    {id:"132250.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1'},
-    
-  
+    {id:"132243.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'3',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132244.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132245.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132246.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132247.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132248.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'1',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132249.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'4',progression:'20%',captain:'capitan 1',articles:['articulo1','articulo2','articulo3']},
+    {id:"132250.com",date_start:"1/02/20",date_end:'2/02/20',competitor:'alguien',status:'2',progression:'20%',captain:'capitan 1',articles:{total:['articulo1','articulo2','articulo3'],capturados:['articulo1'],notFound:[]}}
   ];
   buttonActivator:boolean;
  
@@ -49,7 +46,7 @@ export class BoardComponent implements OnInit {
   columnsToDisplay =  ['id','date_start','date_end','competitor','status','progression','captain','options'];
   expandedElement: MisionElement | null;
 
-  constructor( private matDialog: MatDialog) { }
+  constructor( private _router:Router) { }
 
   ngOnInit() {
     this.buttonActivator = false;
@@ -71,6 +68,10 @@ export class BoardComponent implements OnInit {
         this.dataSource.data=this.users;
       } 
     }
+  }
+
+  newMision(){
+    this._router.navigate(['board/new-mission']);
   }
 
   

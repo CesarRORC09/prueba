@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Material
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +24,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTreeModule } from '@angular/material/tree';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 // Components
 import { HomeComponent } from '../components/home/home.component';
@@ -30,6 +35,8 @@ import { MainComponent } from '../components/main/main.component';
 import { LoginComponent } from '../components/login/login.component';
 import { BoardComponent } from '../components/board/board.component';
 import { AddMisionComponent } from '../components/add-mision/add-mision.component';
+import { AddMisionGeneralComponent } from '../components/add-mision-general/add-mision-general.component';
+import { AddMisionArticlesComponent } from '../components/add-mision-articles/add-mision-articles.component';
 import { SettingsComponent } from '../components/settings/settings.component';
 import { CaptainSComponent } from '../components/captain-s/captain-s.component';
 import { AddCaptainComponent } from '../components/add-captain/add-captain.component';
@@ -38,6 +45,9 @@ import { AddCompetitorComponent } from '../components/add-competitor/add-competi
 import { SkuSComponent } from '../components/sku-s/sku-s.component';
 import { AddSkauComponent } from '../components/add-sku/add-skau.component';
 import { SidenavComponent } from '../components/sidenav/sidenav.component';
+import { CardComponent } from '../components/card/card.component';
+import { DeckComponent } from '../components/deck/deck.component';
+import { TreeListComponent } from './tree-list/tree-list.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +65,11 @@ import { SidenavComponent } from '../components/sidenav/sidenav.component';
     SkuSComponent,
     AddSkauComponent,
     SidenavComponent,
+    AddMisionGeneralComponent,
+    AddMisionArticlesComponent,
+    CardComponent,
+    DeckComponent,
+    TreeListComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +94,12 @@ import { SidenavComponent } from '../components/sidenav/sidenav.component';
     MatListModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule,
+    MatGridListModule,
+    MatPaginatorModule,
+    MatTreeModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

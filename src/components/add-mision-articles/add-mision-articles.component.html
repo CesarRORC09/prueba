@@ -1,0 +1,16 @@
+<div fxLayout="column" fxFill>
+     <div class="side-nav">
+         <app-tree-list></app-tree-list>
+     </div>
+     <div class="container">
+     <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px" class="top-container">
+                                <mat-form-field fxFlex>
+                                    <input type="text" matInput placeholder="Buscar mision" (upKey)="buscar()">
+                                </mat-form-field>
+                            </div>
+                            <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
+                            <div class="content-table">
+                                <app-deck></app-deck>
+                            </div>
+     </div>
+</div>

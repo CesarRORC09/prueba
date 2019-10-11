@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase:{
+    apiKey: "AIzaSyBAvA8x0YoDFbdk0dWwrYKg1z1F0PW9CR8",
+    authDomain: "misiones-od-dev.firebaseapp.com",
+    databaseURL: "https://misiones-od-dev.firebaseio.com",
+    projectId: "misiones-od-dev",
+    storageBucket: "misiones-od-dev.appspot.com",
+    messagingSenderId: "815753508566",
+    appId: "1:815753508566:web:293e206e30ed22ed2a3b77"
+  }
 };
 
 /*

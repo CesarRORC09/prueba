@@ -1,0 +1,26 @@
+
+.grid{
+  border: 1px solid black;
+}
+
+
+span.info{
+    height: 25px;
+    border-radius: 5px;
+    background: rgb(101, 126, 10)
+}
+
+div.canasta{
+    display: block;
+   overflow: auto;  
+   display: block;
+   overflow-y: scroll;
+   scroll-behavior: smooth;
+     margin: 10px;
+}
+
+
+mat-card.card-picture {
+    width: 10%;
+    margin-bottom: 2%;
+  }

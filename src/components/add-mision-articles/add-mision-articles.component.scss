@@ -1,0 +1,26 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+.sidenav{
+  border: solid 1px;
+    width: 20%;
+    height: 100%;
+  }
+  .content{
+    border: solid 1px;
+  width: 80%;
+  height: 100%;
+}
+div.content-table {
+  border: 1px solid black;
+  display: block;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+    margin: 2%;
+    height: 75%;
+  }

@@ -1,0 +1,6 @@
+
+<div fxLayout="row wrap" fxFlex.md="70" fxLayoutWrap class="card-deck-container mat-elevation-z4">
+       <div fxFlex *ngFor="let product of articles" class="card-item">
+         <app-card [ngStyle]="{'width':'200' + 'px','height':'200' + 'px'}" [product]="product"></app-card>
+       </div>
+</div> 

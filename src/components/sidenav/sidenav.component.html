@@ -1,5 +1,5 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
-  <mat-toolbar color="accent">
+    <mat-toolbar color="accent" style="min-height: 55px !important; height: 55px !important;">
     <mat-toolbar-row>
         <div fxLayout="row" fxLayoutAlign="start center" fxFill>
             <div >
@@ -27,7 +27,7 @@
             <hr>
             <div>
               <mat-nav-list>
-                <a mat-list-item [routerLink]="nav.route" *ngFor="let nav of fillerNav" routerLinkActive="active" >{{nav.name}}</a>
+                <a mat-list-item [routerLink]="nav.route" *ngFor="let nav of fillerNav" routerLinkActive="active" (click)="nav.action">{{nav.name}}</a>
               </mat-nav-list>
             </div>
           </mat-sidenav>

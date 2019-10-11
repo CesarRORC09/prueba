@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,12 +17,13 @@ export class SidenavComponent implements OnInit {
     {name:"Productos",route:"skus"},
     {name:"Capitanes",route:"captains"},
     {name:"Empresas",route:"competitors"},
-    {name:"Cerrar sesion",route:"/login"}
+    {name:"Cerrar sesion",route:"/login",action:"logOut()"}
   ];
 
   private _mobileQueryListener: () => void;
 
-  constructor(private router:Router,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private authService:AuthService,
+    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -38,10 +40,7 @@ export class SidenavComponent implements OnInit {
   }
 
   logOut(){
-    this.router.navigate(['/login'])
-  }
-  goHome(){
-    this.router.navigate(['/board/home']);
+    this.authService.logOut().then(()=>console.log("salio"));
   }
 
   changeIcon(){

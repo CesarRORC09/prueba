@@ -1,0 +1,12 @@
+<mat-card>
+
+        <mat-card-header>
+          <mat-card-title class="mat-card-title"fxLayout="row" fxLayoutAlign="end center">
+              {{product.name}}
+                  <button mat-button (click)="sendData()"><mat-icon>delete</mat-icon></button>
+
+          </mat-card-title>
+        </mat-card-header>  
+        <img mat-card-image [src]="product.picture">
+      
+</mat-card>

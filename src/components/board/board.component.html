@@ -1,44 +1,18 @@
 <div fxLayout="column" fxFill>
-        <mat-toolbar color="accent">
+        <mat-toolbar color="accent" style="min-height: 55px !important; height: 55px !important;">
                 <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" fxFlexOffset="3">
                         <div>
                             <h1>MISIONES</h1>
                         </div>
                         <div>
-                            <button mat-raised-button	 color="primary" ><mat-icon matPrefix>add</mat-icon>&nbsp;MISION</button>
+                            <button mat-raised-button (click)="newMision()" color="primary" ><mat-icon matPrefix>add</mat-icon>&nbsp;MISION</button>
                         </div>
                     </mat-toolbar-row>
         </mat-toolbar>
     <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px" class="top-container">
-        <!-- <mat-form-field fxFelx>
+        <mat-form-field fxFlex>
             <input type="text" matInput placeholder="Buscar mision" (upKey)="buscar()">
-        </mat-form-field> -->
-        <mat-form-field fxFlex appearance="outline">
-            <mat-label>Fecha de inicio</mat-label>
-            <input matInput [matDatepicker]="picker1" placeholder="Elige una fecha de inicio">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-        <mat-form-field fxFlex appearance="outline">
-            <mat-label>Fecha de finalización</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="Elige una fecha de fin">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field fxFlex appearance="outline">
-            <mat-label>Competidor</mat-label>
-            <input type="text" matInput placeholder="Competidor">
-        </mat-form-field>
-        <mat-form-field fxFlex appearance="outline">
-                <mat-label>Estado</mat-label>
-                <input type="text" matInput placeholder="Estado">
-        </mat-form-field>
-        <div>   
-            <span>
-                <button class="icons" mat-icon-button color="primary" (click)="newMission()" ><mat-icon matPrefix>add_circle</mat-icon></button>
-                <button class="icons" mat-icon-button color="primary" (click)="newMission()" ><mat-icon matPrefix>search</mat-icon></button>
-            </span>
-        </div>
     </div>
     <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
     <div class="content-table">
@@ -96,7 +70,7 @@
                                     <mat-icon>delete</mat-icon>
                                 </button>
                                 <button mat-icon-button class="icons" (mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
-                                    <mat-icon>pageview</mat-icon>
+                                    <mat-icon>find_in_page</mat-icon>
                                 </button>
                                 <button mat-icon-button color="warn" class="icons"(mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
                                     <mat-icon>not_interested</mat-icon>
@@ -113,10 +87,12 @@
                           <div class="example-element-name">PERIODO: {{element.date_start}} - {{element.date_end}}</div>
                           <div class="example-element-weight">AVANCE: {{element.status}} </div>
                           <div class="example-element-weight">COMPETIDOR: {{element.competitor}} </div>
-                        </div>
-                        <div class="example-element-description">
-                          {{element.description}}
-                          <span class="example-element-description-attribution"></span>
+                          <div class="example-element-description" >
+                            <ul *ngFor="let article of element.articles">
+                                <li>{{article}}</li>
+                            </ul>
+                            <span class="example-element-description-attribution"></span>
+                          </div>
                         </div>
                       </div>
                     </td>

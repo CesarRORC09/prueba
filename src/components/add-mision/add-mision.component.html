@@ -1,164 +1,18 @@
-<!-- <div mat-dialog-component class="dialog-container">
-    <h3  mat-dialog-title>Crear nueva Mision</h3>
-        <div mat-dialog-content>
-            <h5>Mision : idDeLaMision</h5>
-            <form action="">
-                <fieldset class="fieldgroup">
-                    <legend>Articulo</legend>
-                    <mat-form-field appearence="fill" fxFill>
-                        <mat-label > Clase</mat-label>
-                        <mat-select >
-                            <mat-option >Clase 1</mat-option>
-                            <mat-option >Clase 1</mat-option>
-                            <mat-option >Clase 1</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearence="fill" fxFill>
-                            <mat-label > Subclase</mat-label>
-                            <mat-select>
-                                <mat-option [value]="subclase">Clase 1</mat-option>
-                                <mat-option >Clase 1</mat-option>
-                                <mat-option >Clase 1</mat-option>
-                            </mat-select>
-                    </mat-form-field>
-                </fieldset>
-                <fieldset class="fieldgroup">
-                    <legend>Competidor</legend>
-                    <mat-form-field appearence="fill" fxFill>
-                        <mat-label>Competidor</mat-label>
-                        <mat-select>
-                            <mat-option>Competidor 1</mat-option>
-                            <mat-option>Competidor 1</mat-option>
-                            <mat-option>Competidor 1</mat-option>
-                            <mat-option>Competidor 1</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearence="fill" fxFill>
-                            <input matInput [matDatepicker]="picker1" placeholder="Elige una fecha de inicio">
-                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                            <mat-datepicker #picker1></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field appearence="fill" fxFill>
-                            <input matInput [matDatepicker]="picker" placeholder="Elige una fecha de fin">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field appearence="fill" fxFill>
-                        <mat-label>Capitan</mat-label>
-                        <mat-select>
-                            <mat-option>Capitan 1</mat-option>
-                            <mat-option>Capitan 1</mat-option>
-                            <mat-option>Capitan 1</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </fieldset>
-
-                <mat-form-field appearence="outline" fxFill *ngIf="seleccion">
-                    <mat-label>Articulo</mat-label>
-                    <mat-select>
-                        <mat-option>Articulo</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br>
-                <div fxLayout="row" fxLayoutAlign="space-around">
-                    <button mat-raised-button color="accent" fxFlex="30">ASIGNAR</button>
-                    <button mat-raised-button color="accent" fxFlex="30" (click)="cancel()">CANCELAR</button>
-                </div>
-            </form>
+<div fxLayout="column" fxFill>
+        <mat-toolbar color="accent" style="min-height: 55px !important; height: 55px !important;">
+                <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" fxFlexOffset="3">
+                        <div>
+                            <h1>NUEVA MISION</h1>
+                        </div>
+                        <div>
+                            <button mat-raised-button (click)="add()" color="primary" ><mat-icon matPrefix>add</mat-icon>ASIGNAR</button>
+                        </div>
+                    </mat-toolbar-row>
+        </mat-toolbar>
+        <div>
+            <mat-tab-group mat-align-tabs="center" mat-stretch-tabs  >
+                <mat-tab label="GENERAL" >  <app-add-mision-general #general></app-add-mision-general></mat-tab>
+                <mat-tab label="ARTICULOS" > <app-add-mision-articles #articles></app-add-mision-articles></mat-tab>
+            </mat-tab-group>
         </div>
-</div> -->
-<div fxLayout="colum" fxFill>
-    <div fxLayut="colum" fxFlex="30" style="border: black dashed 1px">
-            <h3  mat-dialog-title>Crear nueva Mision</h3>
-            <div mat-dialog-content>
-                <h5>Mision : idDeLaMision</h5>
-                <form action="">
-                    <fieldset class="fieldgroup">
-                        <legend>Articulo</legend>
-                        <mat-form-field appearence="fill" fxFill>
-                            <mat-label > Clase</mat-label>
-                            <mat-select >
-                                <mat-option >Clase 1</mat-option>
-                                <mat-option >Clase 1</mat-option>
-                                <mat-option >Clase 1</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field appearence="fill" fxFill>
-                                <mat-label > Subclase</mat-label>
-                                <mat-select>
-                                    <mat-option [value]="subclase">Clase 1</mat-option>
-                                    <mat-option >Clase 1</mat-option>
-                                    <mat-option >Clase 1</mat-option>
-                                </mat-select>
-                        </mat-form-field>
-                    </fieldset>
-                    <fieldset class="fieldgroup">
-                        <legend>Competidor</legend>
-                        <mat-form-field appearence="fill" fxFill>
-                            <mat-label>Competidor</mat-label>
-                            <mat-select>
-                                <mat-option>Competidor 1</mat-option>
-                                <mat-option>Competidor 1</mat-option>
-                                <mat-option>Competidor 1</mat-option>
-                                <mat-option>Competidor 1</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field appearence="fill" fxFill>
-                                <input matInput [matDatepicker]="picker1" placeholder="Elige una fecha de inicio">
-                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                <mat-datepicker #picker1></mat-datepicker>
-                        </mat-form-field>
-                        <mat-form-field appearence="fill" fxFill>
-                                <input matInput [matDatepicker]="picker" placeholder="Elige una fecha de fin">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
-                        <mat-form-field appearence="fill" fxFill>
-                            <mat-label>Capitan</mat-label>
-                            <mat-select>
-                                <mat-option>Capitan 1</mat-option>
-                                <mat-option>Capitan 1</mat-option>
-                                <mat-option>Capitan 1</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </fieldset>
-    
-                    <mat-form-field appearence="outline" fxFill *ngIf="seleccion">
-                        <mat-label>Articulo</mat-label>
-                        <mat-select>
-                            <mat-option>Articulo</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <br>
-                    <div fxLayout="row" fxLayoutAlign="space-around">
-                        <button mat-raised-button color="accent" fxFlex="30">ASIGNAR</button>
-                        <button mat-raised-button color="accent" fxFlex="30" (click)="cancel()">CANCELAR</button>
-                    </div>
-                </form>
-            </div>
-    </div>
-    <div class="canasta" fxLayut="column" fxFlex="70" style="border: black dashed 1px">
-        <div class="square" fxLayout="column" fxLayoutAlign="center center">
-            <h4>Nombre del producto</h4>
-                <p>SKU</p>
-            <div><img src="../../assets/img/lapiz.jpg" width="40%" style="float: right ;"></div>
-        </div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-    </div>
 </div>
