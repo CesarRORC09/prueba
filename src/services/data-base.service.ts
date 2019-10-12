@@ -21,6 +21,9 @@ export class DataBaseService {
       return array;
     });
   }
+  public getCollection(collection,id,collectionChild){
+    
+  }
 
   public getAllPaginator(collection, options?, appName?) {
     const dbRef = this.getReference(collection, options, undefined, appName);

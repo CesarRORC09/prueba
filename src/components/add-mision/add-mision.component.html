@@ -10,8 +10,8 @@
                     </mat-toolbar-row>
         </mat-toolbar>
         <div>
-            <mat-tab-group mat-align-tabs="center" mat-stretch-tabs  >
-                <mat-tab label="GENERAL" >  <app-add-mision-general #general></app-add-mision-general></mat-tab>
+            <mat-tab-group mat-align-tabs="center" mat-stretch-tabs >
+                <mat-tab label="GENERAL"  >  <app-add-mision-general [articles]="articlesLoaded" #general ></app-add-mision-general></mat-tab>
                 <mat-tab label="ARTICULOS" > <app-add-mision-articles #articles></app-add-mision-articles></mat-tab>
             </mat-tab-group>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -39,7 +39,7 @@ export class AddMisionGeneralComponent implements OnInit {
 
 
 
-  articles=[
+ /*  articles=[
     {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
     {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
     {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
@@ -55,10 +55,11 @@ export class AddMisionGeneralComponent implements OnInit {
     {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
     {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
     {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-  ]
+  ] */
   constructor() { }
 
   ngOnInit() {
+   
   }
 
   captionDataMision(){

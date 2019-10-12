@@ -1,16 +1,24 @@
-<div fxLayout="column" fxFill>
-     <div class="side-nav">
-         <app-tree-list></app-tree-list>
-     </div>
-     <div class="container">
-     <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px" class="top-container">
-                                <mat-form-field fxFlex>
-                                    <input type="text" matInput placeholder="Buscar mision" (upKey)="buscar()">
-                                </mat-form-field>
-                            </div>
-                            <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
-                            <div class="content-table">
-                                <app-deck></app-deck>
-                            </div>
-     </div>
+<div fxLayout="column" fxFill style="height:73vh;">
+    <div fxLayout="row" fxLayoutAlign="stretch" fxFill class="top-container">
+            <div class="side-nav">
+                <ul>
+                    <li *ngFor="let cat of categories">{{cat.data.name}}</li>
+                </ul>
+            </div>
+            <div class="content">
+                    <div class="canasta" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="start">
+                            <mat-card class="card-picture" *ngFor="let article of articles" (click)="capture(article)">
+                                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                                    <span fxFlex="80%">{{article.data.name}}</span>
+                                    <button mat-icon-button color="primary">
+                                        <mat-icon  fxFlex="15%" *ngIf="article.active" (click)="discapture(article)">check</mat-icon>
+                                    </button>
+                                </mat-card-title>
+                               <img mat-card-image src="../../assets/img/lapiz.jpg" > 
+                            </mat-card>                  
+                     </div>
+            </div>     
+    </div>
+                     
 </div>
+

@@ -1,26 +1,19 @@
-.example-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #eee;
+div.side-nav{
+  border: 1px black solid;
+
+  width: 20%;
 }
-.sidenav{
-  border: solid 1px;
-    width: 20%;
-    height: 100%;
-  }
-  .content{
-    border: solid 1px;
+div.content{
+  padding: 5px;
+  min-width: 70%;
+  border: 1px black solid;
+  height:70vh;
   width: 80%;
-  height: 100%;
 }
-div.content-table {
-  border: 1px solid black;
-  display: block;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-    margin: 2%;
-    height: 75%;
-  }
+.top-container {
+  padding: 1rem;
+
+}
+div.canasta{
+  overflow: auto;
+}

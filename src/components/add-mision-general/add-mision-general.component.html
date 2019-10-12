@@ -38,14 +38,14 @@
         <span class="info">clase 1</span>
     </div>
     <div class="canasta" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="start">
-           <mat-card class="card-picture" *ngFor="let article of articles">
+           <mat-card class="card-picture" ><!-- *ngFor="let article of articles" -->
                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
                    <span fxFlex="80%">{{article.name}}</span> 
                    <button mat-icon-button color="primary">
                        <mat-icon  fxFlex="15%" (click)="delete(article)">delete</mat-icon>
                    </button>
                </mat-card-title>
-               <img mat-card-image src="{{article.picture}}" >
+               <img mat-card-image src="../../assets/img/lapiz.jpg" >
            </mat-card>
            <mat-card class="card-picture" fxLayoutAlign="center center">
                 <button mat-icon-button color="primary" class="icons"  ><mat-icon matPrefix  >add_circle_outline</mat-icon></button>
