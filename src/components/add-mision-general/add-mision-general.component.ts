@@ -7,12 +7,14 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./add-mision-general.component.scss']
 })
 export class AddMisionGeneralComponent implements OnInit {
-  
+@Input() canasta:any;
+@Input() articles:any;
   mission;
 
 
-  idFormContrl = new FormControl('',[
-    Validators.required
+  idFormContrl = new FormControl(this.getRandomInt().toString(),[
+    Validators.required,
+    
   ]);
   date_startFormContrl = new FormControl('',[
     Validators.required
@@ -38,56 +40,64 @@ export class AddMisionGeneralComponent implements OnInit {
   ]);
 
 
-
- /*  articles=[
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-    {name:"lapiz",picture:"../../assets/img/lapiz.jpg"},
-  ] */
   constructor() { }
 
   ngOnInit() {
-   
+   this.canasta.length
   }
 
   captionDataMision(){
-    this.mission={
-      id:this.missionForm.value.id,
-      date_start:this.missionForm.value.date_start,
-      date_end:this.missionForm.value.date_end,
-      competitor:this.missionForm.value.competitor,
-      captain:this.missionForm.value.captain,
-      articles:this.articles,
-      status:0,
-      progression:0
-
-    }
-    console.log(this.mission) 
-    return this.mission;
-  }
-
-  delete(item:any){
-    console.log(item)
-    if(this.articles.length){
-      let index = this.articles.indexOf(item);
-      if(index > -1){
-        this.articles.splice(index,1);
-        console.log(this.articles)
-        return this.articles;
-      } 
+    
+    if(this.missionForm.value.date_end<this.missionForm.value.date_start)
+    {
+      alert("Introduzca fechas validas por favor...");
+    }else{
+      this.clear();
+      this.mission={
+        id:this.missionForm.value.id,
+        data:{
+          date_start:this.missionForm.value.date_start,
+          date_end:this.missionForm.value.date_end,
+          competitor:this.missionForm.value.competitor,
+          captain:this.missionForm.value.captain,
+          articles:this.canasta,
+          status:1,
+          progression:0
+        }
+      }
+      return this.mission;
     }
   }
+
+  discapture(item:any){
+    console.log(item.active)
+    if(item.active==true){
+      if(this.canasta.length>0){
+        let indexCanasta = this.canasta.indexOf(item);
+        let indexArticles = this.articles.indexOf(item);
+        console.log('index',indexCanasta)
+        console.log('index',indexArticles)
+        if(indexCanasta > -1){
+          this.articles[indexArticles].active=false;
+          console.log('descapturado',this.articles[indexArticles])
+          this.canasta.splice(indexCanasta,1);
+         
+        } 
+      }
+      console.log(this.canasta)
+      return this.articles;
+    }
+ }
+
+ clear(){
+   this.canasta.forEach(element => {
+     delete element.active;
+     delete element.collection;
+   });
+ }
+
+ getRandomInt() {
+  return Math.floor(Math.random() * (99999999 - 10000000)) + 10000000;
+}
 
 }

@@ -70,6 +70,11 @@ export class DataBaseService {
     });
   }
 
+  public remove(doc,appName?){
+    let dbRef: any = firebase.app(appName).firestore();
+    return dbRef.collection(doc.collection).doc(doc.id).delete();
+  }
+
   public update(doc, options?, appName?) {
     const dbRef = this.getReference(doc.collection, options, doc.id, appName);
     return dbRef.update(doc.data);

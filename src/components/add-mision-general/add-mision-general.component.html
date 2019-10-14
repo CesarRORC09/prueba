@@ -3,17 +3,17 @@
         <form [formGroup]="missionForm">
             <div fxLayout="row" fxLayoutAlign="space-around">
                     <mat-form-field fxFlex="95">
-                        <input matInput formControlName="id" placeholder="Id de la mision">
+                        <input matInput formControlName="id" placeholder="Id de la mision" readonly="readonly">
                     </mat-form-field>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-around">
                     <mat-form-field fxFlex="45">
-                        <input matInput formControlName="date_start" [matDatepicker]="picker1" placeholder="Choose a date">
+                        <input matInput formControlName="date_start" [matDatepicker]="picker1" placeholder="Fecha de inicio">
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field fxFlex="45">
-                        <input matInput formControlName="date_end" [matDatepicker]="picker2" placeholder="Choose a date">
+                        <input matInput formControlName="date_end" [matDatepicker]="picker2" placeholder="Fecha de fin">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
@@ -34,15 +34,15 @@
     </div>
     
     <div fxLayout="row" fxLayoutGap="5px" >
-        <span class="info" ># seleccioandos</span>
+        <span class="info" >{{canasta.length}} articulos seleccioandos</span>
         <span class="info">clase 1</span>
     </div>
     <div class="canasta" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="start">
-           <mat-card class="card-picture" ><!-- *ngFor="let article of articles" -->
-                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                   <span fxFlex="80%">{{article.name}}</span> 
+           <mat-card class="card-picture"  *ngFor="let article of canasta">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="">
+                   <span fxFlex="85%">{{article.data.name}}</span> 
                    <button mat-icon-button color="primary">
-                       <mat-icon  fxFlex="15%" (click)="delete(article)">delete</mat-icon>
+                       <mat-icon  fxFlex="15%" (click)="discapture(article)">delete</mat-icon>
                    </button>
                </mat-card-title>
                <img mat-card-image src="../../assets/img/lapiz.jpg" >

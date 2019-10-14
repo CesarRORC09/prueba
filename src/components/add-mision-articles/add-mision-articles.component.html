@@ -7,15 +7,29 @@
             </div>
             <div class="content">
                     <div class="canasta" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="start">
-                            <mat-card class="card-picture" *ngFor="let article of articles" (click)="capture(article)">
-                                 <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                                    <span fxFlex="80%">{{article.data.name}}</span>
-                                    <button mat-icon-button color="primary">
-                                        <mat-icon  fxFlex="15%" *ngIf="article.active" (click)="discapture(article)">check</mat-icon>
-                                    </button>
-                                </mat-card-title>
-                               <img mat-card-image src="../../assets/img/lapiz.jpg" > 
-                            </mat-card>                  
+                        <div *ngFor="let article of articles" class="cardContainer">
+                            <mat-card class="card-picture"*ngIf="!article.active" (click)="capture(article)">
+                                    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                                       <span fxFlex="80%">{{article.data.name}}</span>
+                                       <button mat-icon-button color="primary">
+                                           <mat-icon  fxFlex="15%" >add</mat-icon>                       
+                                       </button>
+                                    
+                                   </mat-card-title>
+                                  <img mat-card-image src="../../assets/img/lapiz.jpg" > 
+                               </mat-card>  
+                               
+                               <mat-card class="card-picture"*ngIf="article.active" (click)="discapture(article)" style="background:rgba(102, 255, 42, 0.082)">
+                                    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                                       <span fxFlex="80%">{{article.data.name}}   </span>
+                                       <button mat-icon-button color="primary">
+                                           <mat-icon  fxFlex="15%" >done</mat-icon>                       
+                                       </button>
+                                   </mat-card-title>
+                                  <img mat-card-image src="../../assets/img/lapiz.jpg" > 
+                               </mat-card>      
+                        </div>
+                                
                      </div>
             </div>     
     </div>

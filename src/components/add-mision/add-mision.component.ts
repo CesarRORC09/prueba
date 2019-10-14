@@ -10,36 +10,80 @@ import { DataBaseService } from 'src/services/data-base.service';
   styleUrls: ['./add-mision.component.scss']
 })
 export class AddMisionComponent implements OnInit  {
-  @ViewChild("general",{static:true}) general:AddMisionGeneralComponent;
-  @ViewChild("articles",{static:true}) articles:AddMisionArticlesComponent
-  missionAssigned;
-  articlesLoaded=this.articles.canasta;
+  @ViewChild("general",{static:true}) missionGeneral:AddMisionGeneralComponent;
+  @ViewChild("articles",{static:true}) missionArticles:AddMisionArticlesComponent
+  categories;
+  products;
+  canasta=[];
+  missionAssigned={
+    id:0,
+    data:'',
+    collection:''
+  };
+
+
+
 
 
   constructor(private router:Router,
               private dbSrv:DataBaseService) { }
   ngOnInit() {
-    //this.loadArticles();
-    
+    this.loadArticles();
   }
 
   add(){
-    this.missionAssigned=this.general.captionDataMision();
-    console.log(this.missionAssigned)
-    
-    console.log(this.articles.canasta);
+   
+    this.missionAssigned.id=this.missionGeneral.captionDataMision().id;
+    this.missionAssigned.data=this.missionGeneral.captionDataMision().data;
+    this.missionAssigned.collection='missions'
+    console.log(this.missionAssigned);
+    this.dbSrv.set(this.missionAssigned).then((res,err)=>{
+      console.log(res);
+      this.router.navigate(['/board'])
+    })
   }
 
   loadArticles(){
-   let article={
-    collection:"catalog",
-    id:"articles"
-   }
-    this.dbSrv.get(article).then((res,err)=>{
-      console.log(res,err)
-      this.articlesLoaded=res.data;
-      console.log(this.articlesLoaded)
+    this.dbSrv.getAll('categories',
+    {
+     parent:
+       {
+        id:'esJTzFABbja6S5FF0NhX',
+        collection:'companies'
+      }
+      
+    }).then((res)=>{
+      res.push('false');
+     this.categories=JSON.stringify(res);
+     console.log("Padre",this.categories)
+   });
+
+    this.dbSrv.getAll('catalog',
+    {
+    parent:
+      {
+        id:'esJTzFABbja6S5FF0NhX',
+        collection:'companies'
+      }
+      
+    }).then((res)=>{
+    this.products=this.ordenar(res);
+    console.log("Padre",this.products)
+    this.products.forEach(element => {
+      
+      console.log(element.data.category)
     });
+  });
+   }
+
+
+   ordenar(array){
+    console.log("algo!",array)
+     array.forEach(element => {
+       element.active=false;
+     });
+     console.log("arreglo ordenado",array)
+     return array;
   }
 
 

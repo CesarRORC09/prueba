@@ -15,8 +15,8 @@
         </mat-form-field>
     </div>
     <mat-progress-bar *ngIf="algo==true"></mat-progress-bar>
-    <div class="content-table">
-        <table mat-table [dataSource]="dataSource"multiTemplateDataRows
+    <div class="content-table" *ngIf="missions.length > 0">
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows
         class="mat-elevation-z8">
 
             <ng-container matColumnDef="id">
@@ -45,7 +45,7 @@
                     <span class="status" *ngSwitchCase="1" fxLayoutAlign="center" style="background: rgb(238, 170, 122)">EN PROCESO</span>
                     <span class="status" *ngSwitchCase="2" fxLayoutAlign="center" style="background: rgb(101, 201, 222)">ASIGNADA</span>
                     <span class="status" *ngSwitchCase="3" fxLayoutAlign="center" style="background: rgba(94, 184, 94, 0.849)">TERMINADA</span>
-                    <span class="status" *ngSwitchCase="4" fxLayoutAlign="center" style="background:#d50000">BLOQUEADA</span>
+                    <span class="status" *ngSwitchCase="0" fxLayoutAlign="center" style="background:#d50000">BLOQUEADA</span>
                 </td>
             </ng-container>
             
@@ -72,12 +72,17 @@
                                 <button mat-icon-button class="icons" (mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
                                     <mat-icon>find_in_page</mat-icon>
                                 </button>
-                                <button mat-icon-button color="warn" class="icons"(mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()">
+                                <button mat-icon-button color="warn" class="icons"(mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()" (click)="toBlock(element)" *ngIf="element.status!=0">
                                     <mat-icon>not_interested</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn" class="icons"(mouseenter) ="mouseEnter()" (mouseleave)="mouseLeave()" (click)="toActive(element)" *ngIf="element.status==0">
+                                    <mat-icon>eject</mat-icon>
                                 </button>
                             </span>
                 </td>
             </ng-container>
+
+            
             <ng-container matColumnDef="expandedDetail">
                     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
                       <div class="example-element-detail"
@@ -88,9 +93,9 @@
                           <div class="example-element-weight">AVANCE: {{element.status}} </div>
                           <div class="example-element-weight">COMPETIDOR: {{element.competitor}} </div>
                           <div class="example-element-description" >
-                            <ul *ngFor="let article of element.articles">
-                                <li>{{article}}</li>
-                            </ul>
+                            <!-- <ul *ngFor="let article of element.articles">
+                                <li>alfo</li>
+                            </ul> -->
                             <span class="example-element-description-attribution"></span>
                           </div>
                         </div>
